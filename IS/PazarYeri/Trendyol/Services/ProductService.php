@@ -115,6 +115,40 @@ Class ProductService extends Request
         );
         return $this->getResponse($query, $data);
     }
+	
+     /**
+     * Trendyol'a aktarılan ürünlerin tüm özelliklerinin güncellenmesi için kullanılan servis.
+     *
+     * @param array $data
+     * @return array
+     * @throws TrendyolException
+     */
+    public function updateProduct(array $data = array())
+    {
+
+        $this->setApiUrl('https://api.trendyol.com/sapigw/suppliers/{supplierId}/v2/products');
+        $this->setMethod("POST");
+        $query = array(
+            'items' => array(
+                'barcode' => '',
+                'title' => '',
+                'productMainId' => '',
+                'brandId' => '',
+                'categoryId' => '',
+                'stockCode' => '',
+                'dimensionalWeight' => '',
+                'description' => '',
+                'vatRate' => '',
+                'images' => '',
+                'attributes' => '',
+                'cargoCompanyId' => '',
+                'shipmentAddressId' => '',
+                'returningAddressId' => '',
+            )
+        );
+        return $this->getResponse($query, $data);
+    }
+	
 
     /**
      * Bu method yardımıyla batchRequestId ile alınan işlemlerin sonucunun kontrolü yapılabilir.
